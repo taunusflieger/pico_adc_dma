@@ -49,6 +49,8 @@ int main() {
     bi_decl(bi_1pin_with_name(LED_PIN, "On-board LED"));
 
     stdio_init_all();
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
 
     // Send core 1 off to start driving the "DAC" whilst we configure the ADC.
     // multicore_launch_core1(core1_main);
@@ -76,6 +78,7 @@ int main() {
 
     sleep_ms(5000);
     printf("Arming DMA\n");
+    gpio_put(LED_PIN, 1);
     sleep_ms(1000);
     // Set up the DMA to start transferring data as soon as it appears in FIFO
     uint dma_chan = dma_claim_unused_channel(true);
@@ -116,6 +119,7 @@ int main() {
     }
 
     ZeroFFT((int16_t*)capture_buf, CAPTURE_DEPTH);
+    gpio_put(LED_PIN, 0);
 }
 
 // ----------------------------------------------------------------------------

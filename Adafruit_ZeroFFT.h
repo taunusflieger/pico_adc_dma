@@ -19,7 +19,6 @@
 #define ADAFRUIT_ZEROFFT_ADAFRUIT_ZEROFFT_H_
 
 #include "pico/stdlib.h"
-//#include <Arduino.h>
 
 #define FFT_BIN(num, fs, size)                                                 \
   (num *                                                                       \
