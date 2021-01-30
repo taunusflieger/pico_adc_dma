@@ -13,6 +13,7 @@
 #include "pico/multicore.h"
 #include "hardware/pio.h"
 #include "pico/binary_info.h"
+#include "Adafruit_ZeroFFT.h"
 // #include "resistor_dac.pio.h"
 
 // This example uses the DMA to capture many samples from the ADC.
@@ -113,6 +114,8 @@ int main() {
         if (i % 10 == 9)
             printf("\n");
     }
+
+    ZeroFFT((int16_t*)capture_buf, CAPTURE_DEPTH);
 }
 
 // ----------------------------------------------------------------------------

@@ -19,7 +19,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(adc_dma adc_dma.c )
+add_executable(adc_dma adc_dma.c arm_common_tables.c fftutil.c fftwindows.c)
 
 pico_set_program_name(adc_dma "adc_dma")
 pico_set_program_version(adc_dma "0.1")
