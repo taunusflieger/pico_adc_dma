@@ -1,0 +1,24 @@
+DMA
+Peripheral-to-memory: a peripheral signals the DMA when it has received data. The DMA reads this data from the
+peripheral’s data FIFO, and writes it to an array in RAM
+
+Transfersize 32, 16, 8 bit
+
+READ_ADDR is a pointer to the next address to be read from. If the address does not increment (e.g. it is the address of a peripheral FIFO), and the next transfer sequence is
+to/from that same address, there is no need to write to the register again.
+
+CTRL.TREQ_SEL  select a peripheral data request (DREQ)
+
+DREQ_ADC - DREQ channel for ADC
+
+
+ADC_BASE 0x4004c000
+ADC_FIFO = ADC_BASE + 0x0c;
+
+To enable ADC DMA operations ADC needs to operate in FIFO mode
+- adc_fifo_setup
+
+
+__not_in_flash_func(x) allows function to be placed in SRAM rather in Flash memory
+
+
